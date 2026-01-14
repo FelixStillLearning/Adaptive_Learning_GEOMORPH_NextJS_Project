@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Interactive 3D Learning Space</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6467f2",
+                        "primary-glow": "#6467f266",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0a0a12", // Deep void dark
+                        "glass-dark": "rgba(20, 20, 30, 0.6)",
+                        "glass-border": "rgba(255, 255, 255, 0.1)",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    backgroundImage: {
+                        'grid-pattern': "linear-gradient(to right, #232448 1px, transparent 1px), linear-gradient(to bottom, #232448 1px, transparent 1px)",
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: "Space Grotesk", sans-serif;
+        }
+        
+        /* Custom Scrollbar for the glass panel */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(100, 103, 242, 0.5);
+            border-radius: 3px;
+        }
+
+        /* Ambient Glow Animation for AI Orb */
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 20px 5px rgba(100, 103, 242, 0.3); }
+            50% { box-shadow: 0 0 35px 15px rgba(100, 103, 242, 0.5); }
+            100% { box-shadow: 0 0 20px 5px rgba(100, 103, 242, 0.3); }
+        }
+        .ai-pulse {
+            animation: pulse-glow 4s infinite ease-in-out;
+        }
+
+        /* 3D Grid Background Effect */
+        .bg-grid {
+            background-size: 40px 40px;
+            mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white h-screen overflow-hidden flex flex-col relative">
+<!-- Subtle Ambient Background Effects -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+<div class="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-primary/20 blur-[120px] rounded-full"></div>
+<div class="absolute bottom-[-10%] right-[20%] w-[40%] h-[40%] bg-blue-900/20 blur-[100px] rounded-full"></div>
+<!-- Grid Pattern Overlay for Depth -->
+<div class="absolute inset-0 bg-grid-pattern opacity-[0.07] bg-grid z-0"></div>
+</div>
+<!-- Top Navigation Bar -->
+<header class="relative z-20 flex items-center justify-between px-8 py-4 border-b border-glass-border bg-glass-dark backdrop-blur-md">
+<!-- Left: Logo & Breadcrumbs -->
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-primary/20 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">deployed_code</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">GeoModule 4</h1>
+</div>
+<div class="h-6 w-px bg-white/10 mx-2"></div>
+<nav class="flex items-center gap-2 text-sm text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Course</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<a class="hover:text-primary transition-colors" href="#">Geometry</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-white font-medium">Spatial Volume</span>
+</nav>
+</div>
+<!-- Right: Controls & AI Status -->
+<div class="flex items-center gap-6">
+<a class="text-sm font-medium text-slate-300 hover:text-white flex items-center gap-2 transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Exit Focus Mode
+            </a>
+<div class="flex items-center gap-3 pl-6 border-l border-white/10">
+<div class="flex flex-col items-end mr-2">
+<span class="text-xs font-bold text-primary tracking-wider uppercase">AI Active</span>
+<span class="text-[10px] text-slate-400">Monitoring focus</span>
+</div>
+<!-- AI Companion Orb -->
+<div class="relative size-10 rounded-full bg-gradient-to-br from-primary to-blue-400 ai-pulse flex items-center justify-center border border-white/20">
+<div class="absolute inset-0 bg-white/20 rounded-full blur-[2px]"></div>
+<span class="material-symbols-outlined text-white relative z-10 text-lg">smart_toy</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Workspace -->
+<main class="relative z-10 flex flex-1 overflow-hidden">
+<!-- Left/Center: 3D Interactive Canvas Area -->
+<section class="flex-1 relative flex flex-col items-center justify-center group">
+<!-- 3D Viewport Placeholder -->
+<div class="w-full h-full relative" id="canvas-container">
+<!-- Abstract 3D Representation via Image/Gradient -->
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-full h-full bg-cover bg-center opacity-80" data-alt="Abstract 3D wireframe geometry glowing in dark space" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAmrIkIP4awBLNZ7W8vTvpSfFgGQ7DxxwJ9c22ZPiMXl9WhlLAgEb9YTc2aajgzpnOwn8iqZeYhmk5G0n0tI-TRphcUODJ6zDk7SDYw-p5brjLufcIHHH_gavrgcOe4lW1C-Sj9Lu5P3IxBxMSGUUef_2SAs8gSOMPWeZSAaovXD8cViuNbBX8SqJM7sqiYVZR0leTbmGVkjJ18HF2ukCeVhL8daIIA8yFzzdnuSEfu9V3Gwe5-F7FuxEgYk9HyZfmvaktbnBxZidtl'); mask-image: linear-gradient(to right, black 80%, transparent 100%); -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);">
+</div>
+<!-- Floating 3D Labels (Simulated) -->
+<div class="absolute top-1/3 left-1/4 bg-black/60 backdrop-blur px-3 py-1 rounded border border-primary/30 text-xs text-primary font-mono animate-bounce" style="animation-duration: 3s;">
+                       Vertex A (x:5, y:12)
+                   </div>
+<div class="absolute bottom-1/3 right-1/3 bg-black/60 backdrop-blur px-3 py-1 rounded border border-white/10 text-xs text-slate-300 font-mono">
+                       Radius: 5u
+                   </div>
+</div>
+<!-- Floating Toolbar (Bottom Center) -->
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-glass-dark backdrop-blur-xl border border-glass-border p-2 rounded-full shadow-2xl z-20">
+<button class="size-10 rounded-full flex items-center justify-center text-slate-300 hover:bg-white/10 hover:text-white transition-all tooltip-trigger" title="Rotate">
+<span class="material-symbols-outlined">3d_rotation</span>
+</button>
+<button class="size-10 rounded-full flex items-center justify-center text-slate-300 hover:bg-white/10 hover:text-white transition-all" title="Scale">
+<span class="material-symbols-outlined">open_in_full</span>
+</button>
+<button class="size-10 rounded-full flex items-center justify-center text-slate-300 hover:bg-white/10 hover:text-white transition-all" title="Slice">
+<span class="material-symbols-outlined">content_cut</span>
+</button>
+<div class="w-px h-6 bg-white/10 mx-1"></div>
+<button class="size-10 rounded-full flex items-center justify-center bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 transition-all" title="Measure">
+<span class="material-symbols-outlined">straighten</span>
+</button>
+</div>
+<!-- Emotion/Focus Indicator (Bottom Left Floating) -->
+<div class="absolute bottom-8 left-8 bg-glass-dark backdrop-blur-md border border-glass-border p-3 rounded-lg flex items-center gap-3">
+<div class="flex flex-col gap-1">
+<span class="text-[10px] text-slate-400 uppercase tracking-wider">Cognitive Load</span>
+<div class="flex gap-0.5">
+<div class="w-1 h-3 bg-green-500 rounded-sm"></div>
+<div class="w-1 h-3 bg-green-500 rounded-sm"></div>
+<div class="w-1 h-3 bg-green-500/30 rounded-sm"></div>
+<div class="w-1 h-3 bg-yellow-500/30 rounded-sm"></div>
+<div class="w-1 h-3 bg-red-500/30 rounded-sm"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right: Glassmorphism Question Panel -->
+<aside class="w-[420px] relative z-20 h-full border-l border-glass-border bg-glass-dark backdrop-blur-xl flex flex-col shadow-[-10px_0_30px_rgba(0,0,0,0.3)]">
+<!-- Panel Header -->
+<div class="p-6 border-b border-glass-border shrink-0">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded border border-primary/20">QUESTION 3/10</span>
+<button class="text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">info</span>
+</button>
+</div>
+<h2 class="text-2xl font-bold text-white leading-tight">Volume Calculation</h2>
+<p class="text-slate-400 text-sm mt-1">Determine the spatial volume of the intersected region.</p>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto p-6 custom-scrollbar flex flex-col gap-6">
+<!-- Problem Statement Card -->
+<div class="bg-white/5 rounded-lg border border-white/5 p-4">
+<p class="text-slate-200 text-sm leading-relaxed mb-4">
+                        The object shown is an icosahedron intersected by a plane at <span class="font-mono text-primary bg-primary/10 px-1 rounded">z = 2.5</span>. 
+                        Calculate the volume of the upper section if the radius is 5 units.
+                    </p>
+<!-- Formula Hint -->
+<div class="flex items-center gap-3 bg-black/40 rounded p-3 border border-white/5">
+<span class="material-symbols-outlined text-yellow-400 text-sm">lightbulb</span>
+<p class="text-xs text-slate-400">Recall the formula for a spherical cap: <span class="text-slate-200 font-mono italic">V = (πh²/3)(3R - h)</span></p>
+</div>
+</div>
+<!-- Interactive Steps -->
+<div class="flex flex-col gap-4">
+<h3 class="text-sm font-semibold text-white uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-base">format_list_numbered</span> Steps
+                    </h3>
+<div class="group relative pl-4 border-l-2 border-primary/50 pb-2">
+<div class="absolute -left-[5px] top-0 size-2.5 rounded-full bg-primary ring-4 ring-primary/20"></div>
+<label class="block text-xs text-slate-400 mb-1">Step 1: Determine Height (h)</label>
+<div class="relative">
+<input class="w-full bg-black/30 border border-white/10 rounded px-3 py-2 text-white text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-mono" readonly="" type="text" value="2.5"/>
+<span class="absolute right-3 top-2.5 material-symbols-outlined text-green-500 text-sm">check_circle</span>
+</div>
+</div>
+<div class="group relative pl-4 border-l-2 border-white/10 pb-2">
+<div class="absolute -left-[5px] top-0 size-2.5 rounded-full bg-slate-600 ring-4 ring-slate-600/20"></div>
+<label class="block text-xs text-slate-300 mb-1">Step 2: Calculate Volume</label>
+<div class="relative flex items-center gap-2 mb-2">
+<span class="text-slate-400 font-mono text-sm">V = </span>
+<input class="flex-1 bg-black/50 border border-white/20 rounded px-3 py-2 text-white text-sm focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-mono placeholder:text-slate-600" placeholder="Enter result..." type="text"/>
+</div>
+<p class="text-[10px] text-slate-500 text-right">Express in terms of π if needed.</p>
+</div>
+</div>
+<!-- AI Insight Block -->
+<div class="mt-2 bg-gradient-to-r from-primary/10 to-transparent border border-primary/20 rounded-lg p-3 flex gap-3 items-start">
+<div class="size-6 rounded-full bg-primary/20 flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-primary text-xs">auto_awesome</span>
+</div>
+<div>
+<p class="text-xs text-slate-300 leading-relaxed">
+<span class="font-bold text-primary">AI Insight:</span> Most students forget to subtract the cap height from the radius. Double check your <span class="font-mono text-xs bg-white/10 px-1 rounded">h</span> value.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Panel Footer Actions -->
+<div class="p-6 border-t border-glass-border bg-glass-dark/50 backdrop-blur-xl mt-auto">
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-md border border-white/10 text-slate-300 hover:bg-white/5 hover:text-white transition-all text-sm font-medium">
+<span class="material-symbols-outlined text-lg">help</span>
+                        Hint
+                    </button>
+<button class="flex items-center justify-center gap-2 py-2.5 px-4 rounded-md bg-primary hover:bg-primary/90 text-white transition-all shadow-[0_0_15px_rgba(100,103,242,0.4)] text-sm font-bold">
+<span class="material-symbols-outlined text-lg">check</span>
+                        Submit
+                    </button>
+</div>
+</div>
+</aside>
+</main>
+</body></html>

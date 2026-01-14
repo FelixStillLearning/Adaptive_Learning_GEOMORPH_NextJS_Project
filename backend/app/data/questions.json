@@ -1,0 +1,674 @@
+[
+    {
+        "id": 1,
+        "difficulty": 1,
+        "topic": "cube",
+        "question": "Sebuah kubus memiliki panjang rusuk 10 cm. Berapakah luas permukaan totalnya?",
+        "options": [
+            "100 cm²",
+            "400 cm²",
+            "600 cm²",
+            "1000 cm²"
+        ],
+        "correct_answer": "600 cm²",
+        "hint": "Luas satu sisi adalah s². Kubus memiliki 6 sisi identik."
+    },
+    {
+        "id": 2,
+        "difficulty": 1,
+        "topic": "cuboid",
+        "question": "Balok berukuran panjang 10 cm, lebar 5 cm, dan tinggi 4 cm. Berapakah volumenya?",
+        "options": [
+            "200 cm³",
+            "100 cm³",
+            "150 cm³",
+            "19 cm³"
+        ],
+        "correct_answer": "200 cm³",
+        "hint": "Rumus volume balok adalah Panjang × Lebar × Tinggi."
+    },
+    {
+        "id": 3,
+        "difficulty": 1,
+        "topic": "cube",
+        "question": "Jika volume sebuah kubus adalah 125 cm³, berapakah panjang rusuknya?",
+        "options": [
+            "5 cm",
+            "10 cm",
+            "15 cm",
+            "25 cm"
+        ],
+        "correct_answer": "5 cm",
+        "hint": "Akar pangkat tiga dari 125 adalah..."
+    },
+    {
+        "id": 4,
+        "difficulty": 1,
+        "topic": "prism",
+        "question": "Prisma segitiga memiliki luas alas 20 cm² dan tinggi prisma 10 cm. Berapa volumenya?",
+        "options": [
+            "200 cm³",
+            "100 cm³",
+            "60 cm³",
+            "30 cm³"
+        ],
+        "correct_answer": "200 cm³",
+        "hint": "Volume prisma = Luas Alas × Tinggi Prisma."
+    },
+    {
+        "id": 5,
+        "difficulty": 2,
+        "topic": "cylinder",
+        "question": "Sebuah tabung memiliki jari-jari 7 cm dan tinggi 10 cm. Hitung volumenya! (π = 22/7)",
+        "options": [
+            "1540 cm³",
+            "154 cm³",
+            "440 cm³",
+            "770 cm³"
+        ],
+        "correct_answer": "1540 cm³",
+        "hint": "Volume = πr²t. Hitung luas lingkaran alas dulu (π × 7 × 7)."
+    },
+    {
+        "id": 6,
+        "difficulty": 2,
+        "topic": "cylinder",
+        "question": "Berapakah luas selimut tabung jika jari-jari 14 cm dan tinggi 10 cm? (π = 22/7)",
+        "options": [
+            "440 cm²",
+            "880 cm²",
+            "616 cm²",
+            "1232 cm²"
+        ],
+        "correct_answer": "880 cm²",
+        "hint": "Luas Selimut = Keliling Alas × Tinggi = 2πrt."
+    },
+    {
+        "id": 7,
+        "difficulty": 2,
+        "topic": "cone",
+        "question": "Kerucut dengan jari-jari 3 cm dan tinggi 4 cm memiliki panjang garis pelukis (s) sebesar...",
+        "options": [
+            "5 cm",
+            "6 cm",
+            "7 cm",
+            "8 cm"
+        ],
+        "correct_answer": "5 cm",
+        "hint": "Gunakan Pythagoras: s² = r² + t²."
+    },
+    {
+        "id": 8,
+        "difficulty": 2,
+        "topic": "sphere",
+        "question": "Volume bola dengan jari-jari 21 cm adalah... (π = 22/7)",
+        "options": [
+            "38808 cm³",
+            "116424 cm³",
+            "29106 cm³",
+            "9702 cm³"
+        ],
+        "correct_answer": "38808 cm³",
+        "hint": "Volume = 4/3 × π × r³."
+    },
+    {
+        "id": 9,
+        "difficulty": 3,
+        "topic": "cone",
+        "question": "Sebuah kerucut memiliki volume 314 cm³ dan jari-jari 5 cm. Berapakah tingginya? (π = 3.14)",
+        "options": [
+            "10 cm",
+            "12 cm",
+            "15 cm",
+            "8 cm"
+        ],
+        "correct_answer": "12 cm",
+        "hint": "V = ⅓πr²t. Maka t = 3V / (πr²)."
+    },
+    {
+        "id": 10,
+        "difficulty": 3,
+        "topic": "sphere",
+        "question": "Luas permukaan bola adalah 616 cm². Berapakah jari-jari bola tersebut? (π = 22/7)",
+        "options": [
+            "7 cm",
+            "14 cm",
+            "3.5 cm",
+            "21 cm"
+        ],
+        "correct_answer": "7 cm",
+        "hint": "L = 4πr². Jadi r² = L / 4π."
+    },
+    {
+        "id": 11,
+        "difficulty": 3,
+        "topic": "composite",
+        "question": "Sebuah kapsul berbentuk tabung ditutup setengah bola di kedua ujungnya. Jika r=7cm dan panjang bagian tabung 10cm, berapa luas permukaannya?",
+        "options": [
+            "1056 cm²",
+            "616 cm²",
+            "440 cm²",
+            "1232 cm²"
+        ],
+        "correct_answer": "1056 cm²",
+        "hint": "Total Luas = Luas Selimut Tabung + Luas Permukaan Satu Bola Penuh (karena ada 2 setengah bola)."
+    },
+    {
+        "id": 12,
+        "difficulty": 3,
+        "topic": "pyramid",
+        "question": "Sebuah limas persegi memiliki keliling alas 40 cm dan tinggi 12 cm. Berapakah volumenya?",
+        "options": [
+            "400 cm³",
+            "1200 cm³",
+            "1600 cm³",
+            "800 cm³"
+        ],
+        "correct_answer": "400 cm³",
+        "hint": "Cari sisi alas dulu dari keliling (4s=40), lalu hitung luas alas (s²)."
+    },
+    {
+        "id": 13,
+        "difficulty": 4,
+        "topic": "composite",
+        "question": "Sebuah kerucut berada di dalam tabung. Alas dan tingginya sama. Berapa rasio volume kerucut terhadap tabung?",
+        "options": [
+            "1:3",
+            "1:2",
+            "2:3",
+            "3:1"
+        ],
+        "correct_answer": "1:3",
+        "hint": "Volume Tabung = πr²t, Volume Kerucut = ⅓πr²t."
+    },
+    {
+        "id": 14,
+        "difficulty": 4,
+        "topic": "cylinder",
+        "question": "Sebuah pipa besi berongga panjangnya 1 m, jari-jari luar 5 cm, jari-jari dalam 3 cm. Berapa volume besi pipa tersebut? (π=3.14)",
+        "options": [
+            "5024 cm³",
+            "2512 cm³",
+            "10048 cm³",
+            "1256 cm³"
+        ],
+        "correct_answer": "5024 cm³",
+        "hint": "Volume = Luas Alas Cincin (πR² - πr²) × Tinggi."
+    },
+    {
+        "id": 15,
+        "difficulty": 4,
+        "topic": "frustum",
+        "question": "Sebuah ember berbentuk kerucut terpancung (frustum). Jari-jari atas 10 cm, bawah 5 cm, tinggi 12 cm. Berapa volumenya? (Gunakan π=3.14)",
+        "options": [
+            "2198 cm³",
+            "1100 cm³",
+            "3300 cm³",
+            "2500 cm³"
+        ],
+        "correct_answer": "2198 cm³",
+        "hint": "Rumus V = ⅓πt(R² + r² + Rr)."
+    },
+    {
+        "id": 16,
+        "difficulty": 4,
+        "topic": "sector",
+        "question": "Juring lingkaran sudut 120° dilipat menjadi kerucut. Jika jari-jari juring 9 cm, berapa jari-jari alas kerucut yang terbentuk?",
+        "options": [
+            "3 cm",
+            "4.5 cm",
+            "6 cm",
+            "9 cm"
+        ],
+        "correct_answer": "3 cm",
+        "hint": "Keliling alas kerucut = Panjang busur juring. 2πr = (120/360) × 2πR."
+    },
+    {
+        "id": 17,
+        "difficulty": 5,
+        "topic": "optimization",
+        "question": "Anda ingin membuat kotak tanpa tutup dari selembar karton 30x30 cm dengan memotong persegi di tiap sudut. Berapa sisi persegi yang harus dipotong agar volume maksimum?",
+        "options": [
+            "5 cm",
+            "10 cm",
+            "15 cm",
+            "2.5 cm"
+        ],
+        "correct_answer": "5 cm",
+        "hint": "Ini masalah optimasi kalkulus, tapi bisa ditebak. V = x(30-2x)²."
+    },
+    {
+        "id": 18,
+        "difficulty": 5,
+        "topic": "composite",
+        "question": "Tiga bola tenis (r=3.3 cm) dimasukkan ke dalam tabung yang pas (tinggi = 3×diameter, r tabung = r bola). Berapa persen volume tabung yang KOSONG?",
+        "options": [
+            "33.3%",
+            "50%",
+            "66.6%",
+            "25%"
+        ],
+        "correct_answer": "33.3%",
+        "hint": "Volume 3 Bola = 3 × (4/3)πr³ = 4πr³. Volume Tabung = πr²(6r) = 6πr³. Hitung selisihnya."
+    },
+    {
+        "id": 19,
+        "difficulty": 5,
+        "topic": "rotation",
+        "question": "Daerah yang dibatasi y=x², x=2, dan sumbu-x diputar mengelilingi sumbu-x. Berapa volumenya?",
+        "options": [
+            "32π/5",
+            "16π/3",
+            "8π",
+            "4π"
+        ],
+        "correct_answer": "32π/5",
+        "hint": "Integral Volume Benda Putar: ∫ π(f(x))² dx dari 0 sampai 2."
+    },
+    {
+        "id": 20,
+        "difficulty": 5,
+        "topic": "archimedes",
+        "question": "Bola dimasukkan ke dalam kubus yang pas (sisi kubus = diameter bola). Berapa perbandingan Luas Permukaan Bola : Luas Permukaan Kubus?",
+        "options": [
+            "π : 6",
+            "1 : 2",
+            "2 : 3",
+            "11 : 21"
+        ],
+        "correct_answer": "π : 6",
+        "hint": "LP Bola = 4πr². LP Kubus = 6(2r)² = 24r². Bandingkan."
+    },
+    {
+        "id": 21,
+        "difficulty": 1,
+        "topic": "cube",
+        "question": "Berapa jumlah rusuk pada sebuah kubus?",
+        "options": [
+            "8",
+            "10",
+            "12",
+            "6"
+        ],
+        "correct_answer": "12",
+        "hint": "Kubus memiliki 6 sisi, 8 titik sudut, dan... rusuk."
+    },
+    {
+        "id": 22,
+        "difficulty": 1,
+        "topic": "cuboid",
+        "question": "Balok dengan panjang 8 cm, lebar 6 cm, tinggi 5 cm. Berapa luas permukaan totalnya?",
+        "options": [
+            "236 cm²",
+            "240 cm²",
+            "188 cm²",
+            "200 cm²"
+        ],
+        "correct_answer": "236 cm²",
+        "hint": "LP = 2(pl + pt + lt)"
+    },
+    {
+        "id": 23,
+        "difficulty": 1,
+        "topic": "prism",
+        "question": "Prisma segitiga sama sisi dengan sisi alas 6 cm dan tinggi prisma 10 cm. Berapa luas permukaan selimutnya?",
+        "options": [
+            "180 cm²",
+            "120 cm²",
+            "90 cm²",
+            "60 cm²"
+        ],
+        "correct_answer": "180 cm²",
+        "hint": "Luas selimut = Keliling alas × tinggi prisma"
+    },
+    {
+        "id": 24,
+        "difficulty": 2,
+        "topic": "hemisphere",
+        "question": "Sebuah kubah berbentuk setengah bola (hemisphere) dengan jari-jari 7 cm. Berapa luas permukaannya? (π = 22/7)",
+        "options": [
+            "462 cm²",
+            "308 cm²",
+            "154 cm²",
+            "616 cm²"
+        ],
+        "correct_answer": "462 cm²",
+        "hint": "LP Hemisphere = 2πr² (lengkung) + πr² (alas) = 3πr²"
+    },
+    {
+        "id": 25,
+        "difficulty": 2,
+        "topic": "hemisphere",
+        "question": "Volume setengah bola dengan diameter 14 cm adalah... (π = 22/7)",
+        "options": [
+            "718.67 cm³",
+            "1437.33 cm³",
+            "2874.67 cm³",
+            "359.33 cm³"
+        ],
+        "correct_answer": "718.67 cm³",
+        "hint": "Volume = ½ × (4/3)πr³ = (2/3)πr³"
+    },
+    {
+        "id": 26,
+        "difficulty": 2,
+        "topic": "cylinder",
+        "question": "Tabung tanpa tutup (seperti gelas) dengan r=5 cm dan t=12 cm. Berapa luas permukaannya? (π=3.14)",
+        "options": [
+            "455.3 cm²",
+            "376.8 cm²",
+            "534.07 cm²",
+            "298.5 cm²"
+        ],
+        "correct_answer": "455.3 cm²",
+        "hint": "LP = πr² (alas) + 2πrt (selimut)"
+    },
+    {
+        "id": 27,
+        "difficulty": 2,
+        "topic": "cone",
+        "question": "Kerucut dengan diameter 12 cm dan tinggi 8 cm. Berapa garis pelukisnya?",
+        "options": [
+            "10 cm",
+            "8 cm",
+            "12 cm",
+            "14 cm"
+        ],
+        "correct_answer": "10 cm",
+        "hint": "s² = r² + t², dengan r = setengah diameter"
+    },
+    {
+        "id": 28,
+        "difficulty": 3,
+        "topic": "octahedron",
+        "question": "Sebuah oktahedron beraturan memiliki panjang rusuk 6 cm. Berapa banyak sisinya?",
+        "options": [
+            "6",
+            "8",
+            "10",
+            "12"
+        ],
+        "correct_answer": "8",
+        "hint": "Oktahedron berasal dari 'okta' yang berarti delapan."
+    },
+    {
+        "id": 29,
+        "difficulty": 3,
+        "topic": "prism",
+        "question": "Prisma segi enam beraturan dengan sisi alas 4 cm dan tinggi 10 cm. Berapa jumlah rusuknya?",
+        "options": [
+            "12",
+            "18",
+            "24",
+            "15"
+        ],
+        "correct_answer": "18",
+        "hint": "Prisma segi-n memiliki 3n rusuk."
+    },
+    {
+        "id": 30,
+        "difficulty": 3,
+        "topic": "pyramid",
+        "question": "Limas segiempat dengan alas persegi 10×10 cm dan tinggi limas 12 cm. Berapa volumenya?",
+        "options": [
+            "400 cm³",
+            "500 cm³",
+            "600 cm³",
+            "1200 cm³"
+        ],
+        "correct_answer": "400 cm³",
+        "hint": "V = ⅓ × Luas alas × tinggi"
+    },
+    {
+        "id": 31,
+        "difficulty": 3,
+        "topic": "sphere",
+        "question": "Bola A memiliki jari-jari 2× jari-jari bola B. Berapa perbandingan volume bola A dan B?",
+        "options": [
+            "2:1",
+            "4:1",
+            "8:1",
+            "16:1"
+        ],
+        "correct_answer": "8:1",
+        "hint": "Volume bola ~ r³"
+    },
+    {
+        "id": 32,
+        "difficulty": 3,
+        "topic": "cone",
+        "question": "Luas selimut kerucut adalah 188.4 cm² dan jari-jarinya 6 cm. Berapa garis pelukisnya? (π=3.14)",
+        "options": [
+            "10 cm",
+            "8 cm",
+            "12 cm",
+            "15 cm"
+        ],
+        "correct_answer": "10 cm",
+        "hint": "Luas selimut = πrs, maka s = Luas/(πr)"
+    },
+    {
+        "id": 33,
+        "difficulty": 4,
+        "topic": "tetrahedron",
+        "question": "Tetrahedron beraturan dengan panjang rusuk 6 cm. Berapa luas satu sisinya?",
+        "options": [
+            "9√3 cm²",
+            "12√3 cm²",
+            "15√3 cm²",
+            "18√3 cm²"
+        ],
+        "correct_answer": "9√3 cm²",
+        "hint": "Sisi tetrahedron adalah segitiga sama sisi. Luas = (√3/4)s²"
+    },
+    {
+        "id": 34,
+        "difficulty": 4,
+        "topic": "composite",
+        "question": "Silinder dipotong vertikal menjadi dua bagian sama besar. Jika r=7 cm dan t=20 cm, berapa luas permukaan satu bagian? (π=22/7)",
+        "options": [
+            "1148 cm²",
+            "880 cm²",
+            "1320 cm²",
+            "968 cm²"
+        ],
+        "correct_answer": "1148 cm²",
+        "hint": "LP = Setengah selimut + alas penuh + 2 potongan persegi panjang"
+    },
+    {
+        "id": 35,
+        "difficulty": 4,
+        "topic": "dodecahedron",
+        "question": "Dodecahedron beraturan memiliki berapa sisi?",
+        "options": [
+            "10",
+            "12",
+            "14",
+            "20"
+        ],
+        "correct_answer": "12",
+        "hint": "Dodeca = 12 (dalam bahasa Yunani)"
+    },
+    {
+        "id": 36,
+        "difficulty": 4,
+        "topic": "icosahedron",
+        "question": "Icosahedron beraturan memiliki berapa titik sudut?",
+        "options": [
+            "10",
+            "12",
+            "20",
+            "30"
+        ],
+        "correct_answer": "12",
+        "hint": "Icosahedron memiliki 20 sisi, 30 rusuk, dan... titik sudut."
+    },
+    {
+        "id": 37,
+        "difficulty": 4,
+        "topic": "torus",
+        "question": "Sebuah donat (torus) memiliki jari-jari besar R=10 cm dan jari-jari kecil r=3 cm. Berapa volumenya? (π²≈9.87)",
+        "options": [
+            "1776.6 cm³",
+            "888.3 cm³",
+            "2665 cm³",
+            "592.2 cm³"
+        ],
+        "correct_answer": "1776.6 cm³",
+        "hint": "Volume torus = 2π²Rr²"
+    },
+    {
+        "id": 38,
+        "difficulty": 5,
+        "topic": "ellipsoid",
+        "question": "Sebuah ellipsoid memiliki sumbu a=6cm, b=4cm, c=3cm. Berapa kira-kira volumenya? (π=3.14)",
+        "options": [
+            "301.44 cm³",
+            "150.72 cm³",
+            "452.16 cm³",
+            "602.88 cm³"
+        ],
+        "correct_answer": "301.44 cm³",
+        "hint": "Volume ellipsoid = (4/3)πabc"
+    },
+    {
+        "id": 39,
+        "difficulty": 5,
+        "topic": "cylindrical_shell",
+        "question": "Sebuah pipa baja (silinder berongga) memiliki R luar=8cm, R dalam=5cm, panjang 50cm. Jika baja 7.8 g/cm³, berapa massanya? (π=3.14)",
+        "options": [
+            "47.7 kg",
+            "23.8 kg",
+            "95.4 kg",
+            "71.6 kg"
+        ],
+        "correct_answer": "47.7 kg",
+        "hint": "Volume = π(R²-r²)×h, lalu kalikan dengan densitas."
+    },
+    {
+        "id": 40,
+        "difficulty": 5,
+        "topic": "composite",
+        "question": "Sebuah es krim cone terdiri dari kerucut (r=3cm, t=12cm) dan setengah bola di atasnya (r=3cm). Berapa volume totalnya? (π=3.14)",
+        "options": [
+            "169.56 cm³",
+            "113.04 cm³",
+            "226.08 cm³",
+            "56.52 cm³"
+        ],
+        "correct_answer": "169.56 cm³",
+        "hint": "Total = Volume kerucut + Volume setengah bola"
+    },
+    {
+        "id": 41,
+        "difficulty": 1,
+        "topic": "sphere",
+        "question": "Sebuah bola memiliki diameter 14 cm. Berapakah jari-jarinya?",
+        "options": [
+            "7 cm",
+            "14 cm",
+            "28 cm",
+            "3.5 cm"
+        ],
+        "correct_answer": "7 cm",
+        "hint": "Jari-jari = setengah diameter."
+    },
+    {
+        "id": 42,
+        "difficulty": 2,
+        "topic": "torus",
+        "question": "Sebuah donat (torus) memiliki jari-jari besar 8 cm dan jari-jari kecil 2 cm. Bentuk ini seperti ban dalam. Berapa lubang tengahnya? (diameter lubang)",
+        "options": [
+            "12 cm",
+            "8 cm",
+            "6 cm",
+            "16 cm"
+        ],
+        "correct_answer": "12 cm",
+        "hint": "Diameter lubang = 2(R - r) = 2(8 - 2)"
+    },
+    {
+        "id": 43,
+        "difficulty": 2,
+        "topic": "pyramid",
+        "question": "Limas segitiga (tetrahedron) dengan alas segitiga sama sisi 6 cm dan tinggi limas 8 cm. Berapa volumenya? (gunakan √3 ≈ 1.73)",
+        "options": [
+            "41.52 cm³",
+            "83.04 cm³",
+            "124.56 cm³",
+            "20.76 cm³"
+        ],
+        "correct_answer": "41.52 cm³",
+        "hint": "Luas alas segitiga = (√3/4)×s². Volume = ⅓ × Luas alas × tinggi."
+    },
+    {
+        "id": 44,
+        "difficulty": 3,
+        "topic": "cylinder",
+        "question": "Sebuah kaleng berbentuk tabung memiliki volume 1570 cm³ dan tinggi 10 cm. Berapakah jari-jarinya? (π = 3.14)",
+        "options": [
+            "7 cm",
+            "5 cm",
+            "10 cm",
+            "8 cm"
+        ],
+        "correct_answer": "7 cm",
+        "hint": "r = √(V/πt)"
+    },
+    {
+        "id": 45,
+        "difficulty": 3,
+        "topic": "cone",
+        "question": "Dua kerucut identik dengan r=5cm dan t=12cm. Jika disatukan alasnya (membentuk double cone), berapa volume totalnya? (π=3.14)",
+        "options": [
+            "628 cm³",
+            "314 cm³",
+            "942 cm³",
+            "471 cm³"
+        ],
+        "correct_answer": "628 cm³",
+        "hint": "Volume 1 kerucut = ⅓πr²t. Total = 2 × volume."
+    },
+    {
+        "id": 46,
+        "difficulty": 4,
+        "topic": "sphere",
+        "question": "Sebuah bola logam dengan jari-jari 6 cm dilebur menjadi 8 bola kecil yang sama besar. Berapakah jari-jari setiap bola kecil?",
+        "options": [
+            "3 cm",
+            "2 cm",
+            "4 cm",
+            "1.5 cm"
+        ],
+        "correct_answer": "3 cm",
+        "hint": "Volume tetap: (4/3)πR³ = 8 × (4/3)πr³. Maka r³ = R³/8."
+    },
+    {
+        "id": 47,
+        "difficulty": 4,
+        "topic": "composite",
+        "question": "Sebuah tenda berbentuk prisma segitiga dengan alas 4m, tinggi segitiga 3m, panjang tenda 5m. Berapa luas kain yang dibutuhkan (termasuk alas)?",
+        "options": [
+            "86 m²",
+            "72 m²",
+            "60 m²",
+            "48 m²"
+        ],
+        "correct_answer": "86 m²",
+        "hint": "Luas = 2 segitiga + 3 persegi panjang (alas + 2 sisi miring)."
+    },
+    {
+        "id": 48,
+        "difficulty": 5,
+        "topic": "hemisphere",
+        "question": "Sebuah mangkuk setengah bola berisi air setinggi ½ jari-jarinya. Jika r=12cm, berapa volume air? (Gunakan integral atau rumus khusus, estimasi: ≈ 1017.36 cm³)",
+        "options": [
+            "1017.36 cm³",
+            "1808 cm³",
+            "452.16 cm³",
+            "3619.11 cm³"
+        ],
+        "correct_answer": "1017.36 cm³",
+        "hint": "Volume spherical cap = (πh²/3)(3r - h), dengan h = r/2."
+    }
+]

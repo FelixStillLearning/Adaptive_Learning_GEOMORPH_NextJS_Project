@@ -1,0 +1,197 @@
+# TECHNICAL DESIGN SPECIFICATION & UI/UX GUIDELINES
+# Project: Emotion-Aware Adaptive Learning based on AI-AR (Web 3D)
+
+================================================================================
+PART 1: BACKEND ARCHITECTURE (FASTAPI)
+================================================================================
+
+1. ARSITEKTUR UMUM
+   Menggunakan pendekatan "Modular Monolith" dengan FastAPI. Sangat dioptimalkan untuk 
+   AI inference yang asynchronous dan handling data real-time.
+
+2. TEKNOLOGI INTI
+   - Framework: FastAPI (Python)
+   - Server: Uvicorn (ASGI)
+   - ORM: SQLModel (atau SQLAlchemy async) + Alembic untuk migrasi
+   - Database: PostgreSQL
+   - AI Processing: TensorFlow/PyTorch (dimuat di memori saat startup)
+
+3. STRUKTUR DIREKTORI (Proposed)
+   /backend
+   ├── app
+   │   ├── api
+   │   │   ├── v1
+   │   │   │   ├── endpoints
+   │   │   │   │   ├── auth.py         # Login/Register
+   │   │   │   │   ├── students.py     # Profile siswa & dashboard
+   │   │   │   │   ├── learning.py     # Logika sesi belajar & fuzzy adjustment
+   │   │   │   │   ├── emotions.py     # Endpoint penerima frame wajah
+   │   │   │   │   └── analytics.py    # Data untuk dashboard guru
+   │   ├── core
+   │   │   ├── config.py
+   │   │   ├── security.py
+   │   │   └── ai_models.py      # Class wrapper untuk meload Model AI
+   │   ├── db
+   │   │   ├── session.py
+   │   │   └── base.py
+   │   ├── models                # Definisi Tabel Database (SQLModel/SQLAlchemy)
+   │   ├── schemas               # Pydantic Models (Request/Response Validation)
+   │   └── services
+   │       ├── fuzzy_logic.py    # Logika adaptif (dipindahkan dari prototype lama)
+   │       └── emotion_service.py
+   └── main.py
+
+================================================================================
+PART 2: DATABASE DESIGN (POSTGRESQL)
+================================================================================
+
+1. ENTITY RELATIONSHIP DIAGRAM (ERD) - Conceptual
+
+   [Users] 1 ----< [Sessions] 1 ----< [InteractionLogs]
+      ^                                     |
+      |                                     |
+   [UserProfile] (Role specific)      [EmotionLogs] (Time-series data)
+
+   [Materials/Levels] 1 ----< [Questions]
+
+2. SPESIFIKASI TABEL UTAMA
+
+   A. Tabel `users`
+   -------------------------------------------------
+   | Column       | Type         | Constraint      |
+   |--------------|--------------|-----------------|
+   | id           | UUID         | PK              |
+   | email        | Varchar      | Unique, Not Null|
+   | password_hash| Varchar      | Not Null        |
+   | role         | Enum         | 'student', 'teacher', 'admin' |
+   | created_at   | Timestamp    |                 |
+
+   B. Tabel `learning_sessions`
+   -------------------------------------------------
+   | Column       | Type         | Description     |
+   |--------------|--------------|-----------------|
+   | id           | UUID         | PK              |
+   | user_id      | UUID         | FK -> users     |
+   | start_time   | Timestamp    |                 |
+   | end_time     | Timestamp    |                 |
+   | initial_mood | Varchar      | Mood awal sesi  |
+   | final_score  | Float        | performa akhir  |
+
+   C. Tabel `interaction_logs` (Inti Adaptif)
+   -------------------------------------------------
+   | Column          | Type      | Description     |
+   |-----------------|-----------|-----------------|
+   | id              | BigInt    | PK              |
+   | session_id      | UUID      | FK -> sessions  |
+   | question_id     | UUID      | FK -> questions |
+   | answer_given    | Text      | Input siswa     |
+   | is_correct      | Boolean   |                 |
+   | time_taken      | Float     | Detik           |
+   | hints_used_count| Integer   |                 |
+   | ai_difficulty_adj| Float    | Hasil Fuzzy (+/-)|
+   | timestamp       | Timestamp |                 |
+
+   D. Tabel `emotion_logs` (High Frequency Data)
+   -------------------------------------------------
+   | Column       | Type         | Description     |
+   |--------------|--------------|-----------------|
+   | id           | BigInt       | PK              |
+   | session_id   | UUID         | FK -> sessions  |
+   | detected_emotion| Varchar   | (Happy/Confused/Bored)|
+   | confidence   | Float        | 0.0 - 1.0       |
+   | source       | Varchar      | 'face' atau 'behavior'|
+   | timestamp    | Timestamp    |                 |
+
+================================================================================
+PART 3: UI/UX DESIGN & VISUAL STRATEGY
+================================================================================
+
+1. KONSEP DESAIN: "Futuristic Edu-Zen"
+   Gabungan nuansa teknologi tinggi (AI) dengan ketenangan (Education/Focus).
+   Tujuannya membuat siswa merasa "canggih" tapi "rileks" untuk mengurangi Math Anxiety.
+
+2. COLOR PALETTE (PREMIUM & AMBIENT)
+   
+   - Background (Canvas):
+     Dark Mode diutamakan. Bukan hitam pekat (#000000), tapi "Deep Space Blue".
+     HEX: #0F172A (Slate 900) atau #0B1120.
+   
+   - Primary Brand Color (Intelligence):
+     Electric Indigo / Violet. Digunakan untuk tombol utama, active state.
+     HEX: #6366F1 (Indigo 500) to #818CF8.
+   
+   - Secondary Color (Calm/Focus):
+     Soft Cyan / Teal. Digunakan untuk elemen pendukung dan chart.
+     HEX: #2DD4BF (Teal 400). Pemicu rasa tenang.
+   
+   - Accent / Feedback:
+     * Success: Emerald Green (#10B981) - Soft, tidak mencolok mata.
+     * Warning/Anxiety High: Warm Coral (#FB7185) - Hindari merah menyala ("Maroon") yang agresif.
+     * Boredom/Low: Muted Blue Grey (#94A3B8).
+
+   - UI Surface (Glassmorphism):
+     Panel transparan dengan blur effect.
+     Background: rgba(30, 41, 59, 0.7)
+     Backdrop-filter: blur(12px)
+     Border: 1px solid rgba(255, 255, 255, 0.1)
+
+3. TYPOGRAPHY
+   - Headings: 'Outfit' atau 'Space Grotesk' (Sans-serif, karakter modern).
+   - Body: 'Inter' atau 'DM Sans' (Sangat mudah dibaca).
+
+4. MOCKUP & HALAMAN DETAIL (Panduan Frontend)
+
+   A. Halaman 1: The Immersive Login
+   -------------------------------------------------
+   - Layout: Split Screen 60:40.
+   - Kiri (60%): Sebuah objek 3D Matematika Besar (misal: Icosahedron yang berputar perlahan dan breathing) di tengah ruang gelap. Ada partikel melayang.
+   - Kanan (40%): Form login dengan gaya Glassmorphism.
+   - Kesan Pertama: "Wow, ini bukan website sekolah biasa."
+
+   B. Halaman 2: Student Dashboard (The "Cockpit")
+   -------------------------------------------------
+   - Header: "Welcome back, Felix 👋".
+   - Cards: 
+     1. "Your Learning Mood": Menampilkan emoji 3D kecil yang merepresentasikan mood rata-rata hari ini.
+     2. "Current Mastery": Progress bar melingkar (Circular progress) dengan gradien warna.
+     3. "Next Mission": Tombol CTA besar "Start Learning" dengan efek glow.
+
+   C. Halaman 3: The Learning Interface (CORE EXPERIENCE)
+   -------------------------------------------------
+   - Layout: Focused Mode (Minim distraksi).
+   - Background: Gelap dengan ambient light yang berubah warna sesuai Emosi Siswa.
+     * Jika Cemas -> Background rona biru sangat muda/sejuk (Coaling).
+     * Jika Bosan -> Sedikit lebih vibrant untuk wake up.
+   
+   - Area Tengah Kiri (Interactive Zone):
+     Canvas Three.js besar. Menampilkan soal geometri/aljabar dalam bentuk 3D.
+     Siswa bisa putar, zoom, klik objek tersebut.
+   
+   - Area Kanan (Question Panel - Glass Panel):
+     Pertanyaan muncul dengan animasi fade-in.
+     Input jawaban besar dan jelas.
+     
+   - Fitur "AI Companion":
+     Sebuah avatar abstrak (orb of light) di pojok kanan atas.
+     * Berdenyut pelan saat siswa berpikir.
+     * Berubah warna jadi kuning saat bingung (terdeteksi AI).
+     * Muncul bubble text "Butuh bantuan? Coba lihat sudut ini..." jika terdeteksi stuck.
+
+   D. Halaman 4: Teacher Dashboard (Analytics)
+   -------------------------------------------------
+   - Fokus Data Visualization.
+   - Heatmap Kelas: Grid warna-warni menunjukkan tingkat kecemasan tiap siswa secara real-time.
+   - Scatter Plot: Sumbu X (Difficulty), Sumbu Y (Anxiety Level). Melihat korelasi materi vs stress.
+   - Komponen: Menggunakan Shadcn UI Cards, Table, dan library Recharts.
+
+5. TECH STACK FRONTEND
+   - Next.js 14 (App Router)
+   - Styling: TailwindCSS
+   - UI Lib: shadcn/ui + Framer Motion (untuk animasi transisi halus)
+   - 3D: React Three Fiber + Drei
+   - State: Zustand
+   - Icons: Lucide React
+
+================================================================================
+END OF SPECIFICATION
+================================================================================

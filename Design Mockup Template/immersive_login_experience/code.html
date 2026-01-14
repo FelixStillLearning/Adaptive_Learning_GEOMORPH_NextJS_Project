@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Immersive Login Experience</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#6467f2",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101122",
+              "slate-900": "#0F172A",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            animation: {
+                'spin-slow': 'spin 20s linear infinite',
+                'float': 'float 6s ease-in-out infinite',
+                'pulse-glow': 'pulse-glow 4s ease-in-out infinite'
+            },
+            keyframes: {
+                float: {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-20px)' },
+                },
+                'pulse-glow': {
+                    '0%, 100%': { opacity: '0.6', transform: 'scale(1)' },
+                    '50%': { opacity: '1', transform: 'scale(1.05)' },
+                }
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .particle {
+            position: absolute;
+            background: rgba(100, 103, 242, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        /* Abstract geometric grid background for left side */
+        .geo-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black, transparent 80%);
+        }
+    </style>
+</head>
+<body class="font-display bg-slate-900 text-white overflow-hidden">
+<div class="flex h-screen w-full flex-col lg:flex-row">
+<!-- LEFT SIDE: Immersive Visuals (60%) -->
+<div class="relative hidden lg:flex w-[60%] flex-col items-center justify-center overflow-hidden bg-slate-900">
+<!-- Deep Space Gradient Background -->
+<div class="absolute inset-0 bg-gradient-to-br from-[#0b0c15] via-[#111122] to-[#1e1b4b] z-0"></div>
+<!-- Grid Overlay -->
+<div class="absolute inset-0 geo-grid z-0 opacity-50"></div>
+<!-- Floating Particles (Simulated) -->
+<div class="particle w-2 h-2 top-1/4 left-1/4 animate-float opacity-50"></div>
+<div class="particle w-3 h-3 top-3/4 left-1/3 animate-float opacity-30" style="animation-delay: 1s;"></div>
+<div class="particle w-1 h-1 top-1/3 right-1/4 animate-float opacity-70" style="animation-delay: 2s;"></div>
+<div class="particle w-4 h-4 bottom-1/4 right-1/3 animate-float opacity-20" style="animation-delay: 1.5s;"></div>
+<!-- Central 3D Icosahedron Visual -->
+<div class="relative z-10 w-[500px] h-[500px] flex items-center justify-center animate-float">
+<!-- Glowing effect behind the shape -->
+<div class="absolute inset-0 bg-primary/20 blur-[100px] rounded-full animate-pulse-glow"></div>
+<!-- Main 3D Shape Image -->
+<img alt="Abstract 3D Shape" class="object-contain w-full h-full mix-blend-screen opacity-90 hover:scale-105 transition-transform duration-700 ease-out" data-alt="Abstract glowing 3D geometric wireframe shape floating in space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaoYlIWEejJx7zeaamctLnroN4fIAYnFEJu8E0jN0OuCzrD7K6kxay_yc1qVne25S4EJhvaa5PEIYYlbBafQyVPHXBxc7OTeXI2Co4zuyTxY-ybeZPqm_VmIZR0csD9ZnSNeK2VglW7vrzekpC-kxs3nmaFypo-ittiZ96rgHJnEd-3OqfL57nBbrsQAbw6U4BfvoVqb4LxSCSv8alRmecAODwqhTuKI_zirQ3SoOQQiau14kbr1xww3a8fQwRooYaft0yhuFGwHvt"/>
+</div>
+<!-- Text Content on Visual Side -->
+<div class="relative z-10 mt-8 text-center px-10 max-w-lg">
+<h2 class="text-3xl font-bold tracking-tight text-white mb-2">Next Gen Learning</h2>
+<p class="text-gray-400 text-lg font-light">Experience emotion-aware adaptive learning powered by AR.</p>
+</div>
+</div>
+<!-- RIGHT SIDE: Interaction Zone (40%) -->
+<div class="relative flex w-full lg:w-[40%] flex-col justify-center items-center bg-slate-900 p-6 lg:p-12">
+<!-- Mobile Background Elements (Visible only on small screens) -->
+<div class="absolute inset-0 lg:hidden bg-gradient-to-b from-[#111122] to-slate-900 z-0"></div>
+<!-- Login Container -->
+<div class="relative z-10 w-full max-w-[420px] glass-panel rounded-2xl p-8 lg:p-10">
+<!-- Logo / Header -->
+<div class="mb-10 flex flex-col gap-2">
+<div class="flex items-center gap-2 mb-2 text-primary">
+<span class="material-symbols-outlined text-4xl">view_in_ar</span>
+<span class="text-xl font-bold tracking-wider text-white">LEARN.AI</span>
+</div>
+<h1 class="text-3xl font-bold text-white tracking-tight">Welcome Back</h1>
+<p class="text-gray-400 text-sm">Access your personalized learning portal.</p>
+</div>
+<!-- Form -->
+<form class="flex flex-col gap-5">
+<!-- Email Field -->
+<label class="flex flex-col gap-2">
+<span class="text-sm font-medium text-gray-300">Email Address</span>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-primary transition-colors">mail</span>
+<input class="w-full bg-[#1e293b]/50 border border-gray-700 text-white text-base rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary block pl-10 p-3.5 placeholder-gray-500 transition-all outline-none" placeholder="student@university.edu" type="email"/>
+</div>
+</label>
+<!-- Password Field -->
+<label class="flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium text-gray-300">Password</span>
+<a class="text-xs font-medium text-primary hover:text-primary/80 transition-colors" href="#">Forgot Password?</a>
+</div>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full bg-[#1e293b]/50 border border-gray-700 text-white text-base rounded-lg focus:ring-2 focus:ring-primary/50 focus:border-primary block pl-10 p-3.5 placeholder-gray-500 transition-all outline-none" placeholder="••••••••" type="password"/>
+<button class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-white transition-colors cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</div>
+</label>
+<!-- Login Button -->
+<button class="mt-2 flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary hover:bg-[#5356e3] text-white h-12 px-5 font-bold tracking-wide transition-all shadow-[0_0_20px_rgba(100,103,242,0.3)] hover:shadow-[0_0_30px_rgba(100,103,242,0.5)] active:scale-[0.98]">
+<span class="mr-2">Enter Portal</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+<!-- Divider -->
+<div class="flex items-center gap-3 my-2">
+<div class="h-[1px] w-full bg-gray-700/50"></div>
+<span class="text-xs text-gray-500 uppercase whitespace-nowrap">Or continue with</span>
+<div class="h-[1px] w-full bg-gray-700/50"></div>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-4">
+<button class="flex items-center justify-center gap-2 h-10 rounded-lg bg-[#1e293b] border border-gray-700 hover:bg-[#283547] hover:border-gray-600 transition-all" type="button">
+<img alt="Google" class="w-5 h-5" data-alt="Google Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByVxOTVp2RrACtY_R4L9cxSlQWMS7tsvTThthaIG-9VuBLi6SeMwaaPmS58PMQb37odXKiycRt1nC5S8_f4856q_o7Qa4dJh6Susbg3plv1RsHpiA_DjIIuRpmDgcSd0tYJcVM8KdDxpAwsquMvpIYhQuDWUF4Nq3xTZLb2bDDR3IDYO575q3U3M1_GgXKhX0MTKmJjie0HP111TNY_QAX1I753otkT537ffctaczM-yGq6m47GArqsHuC0LdatFmDa7RxkGUo7hH6"/>
+<span class="text-sm font-medium text-gray-300">Google</span>
+</button>
+<button class="flex items-center justify-center gap-2 h-10 rounded-lg bg-[#1e293b] border border-gray-700 hover:bg-[#283547] hover:border-gray-600 transition-all" type="button">
+<img alt="Microsoft" class="w-5 h-5" data-alt="Microsoft Logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXt2YFXf4m-UectiStEHZWLBTsm__P-BMjy5zXzjwYKybmO978CdJqzxDljyN7Mpr2GR7fhPAh8gAVAFBox42Tnc8fiB_tPtuX3v3kyk6O8ujCjHqN5Eg0BuEZYu96iHjoYHWnzlPMRx3X1n3-Dzv2xchqwjbR2pL9lKwEE2PI-CuUxvoO-wXWXH9Y_fMQAU1BLeHCKi5hW9gy-sz08rDgD0vMlndYJxVgIFc-4P-FcNuSsWPBt3xh8W6lFR31PegADvqElp-JRiz4"/>
+<span class="text-sm font-medium text-gray-300">Microsoft</span>
+</button>
+</div>
+</form>
+<!-- Footer -->
+<div class="mt-8 text-center">
+<p class="text-sm text-gray-400">
+                        Don't have an account? 
+                        <a class="font-bold text-primary hover:text-white transition-colors" href="#">Sign up</a>
+</p>
+</div>
+</div>
+<!-- Bottom Text -->
+<div class="absolute bottom-6 text-xs text-gray-600">
+                © 2024 Learn.AI Platform. All rights reserved.
+            </div>
+</div>
+</div>
+</body></html>

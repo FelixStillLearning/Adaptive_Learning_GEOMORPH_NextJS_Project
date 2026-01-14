@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Student Learning Cockpit</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#6467f2",
+                        "primary-glow": "#8a8dff",
+                        "secondary": "#2CD4D9", // Teal
+                        "accent": "#4B0082", // Indigo
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0f1016",
+                        "surface-dark": "#191a33",
+                        "surface-glass": "rgba(25, 26, 51, 0.6)",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(30, 32, 60, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(100, 103, 242, 0.5);
+        }
+
+        .glow-button {
+            box-shadow: 0 0 15px rgba(100, 103, 242, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .glow-button:hover {
+            box-shadow: 0 0 25px rgba(100, 103, 242, 0.7);
+            transform: translateY(-1px);
+        }
+        
+        /* Custom progress circle styles */
+        .progress-ring__circle {
+            transition: stroke-dashoffset 0.35s;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-white font-display overflow-x-hidden selection:bg-primary selection:text-white">
+<div class="relative flex h-full min-h-screen w-full flex-col">
+<!-- Background Ambient Glows -->
+<div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-secondary/10 rounded-full blur-[120px]"></div>
+</div>
+<!-- Navigation -->
+<header class="glass-panel sticky top-0 z-50 w-full border-b border-white/5 px-6 py-4">
+<div class="mx-auto flex max-w-7xl items-center justify-between">
+<div class="flex items-center gap-3 text-white">
+<div class="flex items-center justify-center size-8 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-2xl">science</span>
+</div>
+<h1 class="text-xl font-bold tracking-tight">Student Learning Cockpit</h1>
+</div>
+<div class="flex items-center gap-6">
+<button class="relative flex items-center justify-center text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 size-2 bg-red-500 rounded-full"></span>
+</button>
+<div class="h-8 w-[1px] bg-white/10"></div>
+<div class="flex items-center gap-3">
+<div class="text-right hidden sm:block">
+<p class="text-sm font-bold leading-none text-white">Felix V.</p>
+<p class="text-xs text-slate-400">Grade 11 • Science Track</p>
+</div>
+<div class="size-10 rounded-full bg-cover bg-center ring-2 ring-primary/30" data-alt="Portrait of a young student wearing a futuristic headset" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBCEZHD0ELVVZAE5IdwOxmZwaexwOFrA4OdRjS5mpJTFosbNU3qprzXt-EmvnJ6cf0DttFbqBzMb4hVQs7SHk26LX-_vLEXOw1ThOhvnse_CGXfcRG__OMsJe_zCwxvVAkiL0p3Ec4xZxEzrAnIpnLwb4nNRF37vChXrzkuXzPcwOkkEgZ6tOtZH3T-cJRfGHCc4CFDEpLRzF-W2pse89_rd603yB0_Gi43Q-E_fK2nNODaHbN2JVUKzYre5vPOjZx8rY7dKfT0Ur9c");'>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 p-6 lg:p-10">
+<div class="mx-auto max-w-7xl flex flex-col gap-8">
+<!-- Page Heading -->
+<div class="flex flex-wrap items-end justify-between gap-4 animate-fade-in-up">
+<div class="flex flex-col gap-2">
+<h2 class="text-4xl md:text-5xl font-black tracking-tight text-white glow-text">
+                            Welcome back, Felix
+                        </h2>
+<div class="flex items-center gap-2 text-primary-glow font-mono text-sm tracking-wider uppercase">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+</span>
+                            Systems Online. Ready for intake.
+                        </div>
+</div>
+<div class="flex gap-3">
+<div class="glass-panel px-4 py-2 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-orange-400">local_fire_department</span>
+<span class="font-bold">12 Day Streak</span>
+</div>
+<div class="glass-panel px-4 py-2 rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-yellow-400">emoji_events</span>
+<span class="font-bold">2,450 XP</span>
+</div>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- 1. Learning Mood Card (Glassmorphism) -->
+<div class="lg:col-span-4 glass-panel rounded-2xl p-6 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-[60px] rounded-full pointer-events-none"></div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-white text-lg font-bold">AI Emotional Scan</h3>
+<p class="text-slate-400 text-sm">Real-time biometrics</p>
+</div>
+<span class="material-symbols-outlined text-primary/70">face</span>
+</div>
+<div class="flex flex-col items-center justify-center py-4 gap-4">
+<!-- 3D Emoji Representation -->
+<div class="relative size-32 flex items-center justify-center">
+<div class="absolute inset-0 bg-primary/30 blur-[40px] rounded-full animate-pulse"></div>
+<img alt="Current Mood Emoji" class="relative z-10 w-28 h-28 object-contain drop-shadow-2xl hover:scale-110 transition-transform duration-500" data-alt="3D rendered happy floating emoji face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV8dGW7rdOqlSkQkv9RUNwK5WzEPR_Awb3BWvlQUVlOEozav3RUns1XL_AMtHw51gDUhiAk-4gZ14Z5GSsKrKurR4OhSVOu-5XowvbIs2flUAGzMKA5VR6qmBjxxPG4dWS9EYVFrnYe2KO7eSsWqiGvt3t5UEXD2xeJlKSbHoXN9iqaPFt8kPWll645wncSgdGdrlsCPrnisVFOQPLK7Z6JMxPkvX-7EYvqex-zd7M8bfsTqE056y_BaKY_hUC9fF4TS5Ij4O0h_5F"/>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-white mb-1">Focused Flow</div>
+<div class="text-sm text-slate-300 bg-white/5 px-3 py-1 rounded-full border border-white/10">
+                                    Productivity +15%
+                                </div>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-white/5 grid grid-cols-2 gap-2 text-xs text-slate-400">
+<div>Stress Level: <span class="text-green-400 font-bold">Low</span></div>
+<div class="text-right">Focus: <span class="text-primary font-bold">High</span></div>
+</div>
+</div>
+<!-- 2. Current Mastery Card -->
+<div class="lg:col-span-4 glass-panel rounded-2xl p-6 relative overflow-hidden">
+<div class="absolute bottom-0 left-0 w-40 h-40 bg-secondary/10 blur-[60px] rounded-full pointer-events-none"></div>
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-white text-lg font-bold">Skill Mastery</h3>
+<p class="text-slate-400 text-sm">Overall Progress</p>
+</div>
+<span class="material-symbols-outlined text-secondary/70">donut_large</span>
+</div>
+<div class="flex flex-col items-center justify-center py-2">
+<!-- Circular Progress -->
+<div class="relative size-40">
+<svg class="size-full -rotate-90" viewbox="0 0 36 36">
+<!-- Background Circle -->
+<path class="text-white/5" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<!-- Progress Circle Gradient Def -->
+<defs>
+<lineargradient id="gradient" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#2CD4D9"></stop>
+<stop offset="100%" stop-color="#6467f2"></stop>
+</lineargradient>
+</defs>
+<!-- Progress Circle -->
+<path class="progress-ring__circle drop-shadow-[0_0_10px_rgba(44,212,217,0.5)]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="url(#gradient)" stroke-dasharray="78, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<!-- Center Text -->
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-3xl font-black text-white">78%</span>
+<span class="text-[10px] uppercase tracking-wider text-slate-400">Mastered</span>
+</div>
+</div>
+</div>
+<div class="mt-6 flex flex-col gap-3">
+<div class="flex justify-between items-center text-sm">
+<span class="text-slate-300">Physics II</span>
+<span class="text-secondary font-bold">92%</span>
+</div>
+<div class="w-full bg-white/5 rounded-full h-1.5">
+<div class="bg-secondary h-1.5 rounded-full" style="width: 92%"></div>
+</div>
+<div class="flex justify-between items-center text-sm mt-1">
+<span class="text-slate-300">Calculus</span>
+<span class="text-primary font-bold">64%</span>
+</div>
+<div class="w-full bg-white/5 rounded-full h-1.5">
+<div class="bg-primary h-1.5 rounded-full" style="width: 64%"></div>
+</div>
+</div>
+</div>
+<!-- 3. Next Mission Card (Large CTA) -->
+<div class="lg:col-span-4 glass-panel rounded-2xl p-0 relative overflow-hidden flex flex-col h-full border-l-4 border-l-primary">
+<!-- Image Cover Half -->
+<div class="relative h-48 w-full bg-cover bg-center" data-alt="Futuristic geometric shapes floating in a dark digital space" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuARNTJPucVKXhwIXrfvHzJ4QC3ID3OZdtdy6G9NGYg4Y-7kWk8T5LuYEpY2Bhtx4efa1ITOuZY2evrloUpPbeG7fV77CCzT0QkiUGl3DiYo2Odaa2PLOvtbZ1XDvn5fU0LGp2tRAZNBzlDGCGJigkIRXJy4OyHmNOwbysKeoTeN3YivaZGHJAJifZW8_PRU3VmM2x5E6KAMPr4rP8pUZn1gyoJYs3x7O9QcWm5tfMUSslcZids_9WXq6GqDIrSLgCEx6qFGsN9ThKLQ");'>
+<div class="absolute inset-0 bg-gradient-to-t from-[#191a33] to-transparent"></div>
+<div class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-bold px-3 py-1 rounded-full border border-white/20 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">view_in_ar</span>
+                                AR ENABLED
+                            </div>
+</div>
+<div class="p-6 flex flex-col flex-1 justify-between gap-4 bg-gradient-to-b from-transparent to-[#131426]">
+<div>
+<p class="text-primary font-bold text-sm uppercase tracking-wide mb-1">Up Next</p>
+<h3 class="text-2xl font-black text-white leading-tight mb-2">Geometry Basics: Module 4</h3>
+<p class="text-slate-400 text-sm leading-relaxed">
+                                    Visualize 3D shapes in your room using AR. Manipulate vertices and calculate volume in real-time.
+                                </p>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-4 text-xs text-slate-500 font-mono">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+                                        25 Min
+                                    </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_alt</span>
+                                        Intermediate
+                                    </div>
+</div>
+<button class="w-full bg-primary hover:bg-primary-glow text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 glow-button group/btn">
+                                    Start Learning
+                                    <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Stats Row -->
+<div class="lg:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Quick Stat 1 -->
+<div class="glass-panel p-4 rounded-xl flex items-center gap-4 hover:bg-white/5 transition-colors cursor-pointer group">
+<div class="size-12 rounded-lg bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition-colors">
+<span class="material-symbols-outlined text-blue-400">group</span>
+</div>
+<div>
+<p class="text-slate-400 text-xs uppercase tracking-wide font-bold">Class Rank</p>
+<p class="text-white text-xl font-bold">Top 5%</p>
+</div>
+</div>
+<!-- Quick Stat 2 -->
+<div class="glass-panel p-4 rounded-xl flex items-center gap-4 hover:bg-white/5 transition-colors cursor-pointer group">
+<div class="size-12 rounded-lg bg-purple-500/20 flex items-center justify-center group-hover:bg-purple-500/30 transition-colors">
+<span class="material-symbols-outlined text-purple-400">history_edu</span>
+</div>
+<div>
+<p class="text-slate-400 text-xs uppercase tracking-wide font-bold">Assignments</p>
+<p class="text-white text-xl font-bold">2 Pending</p>
+</div>
+</div>
+<!-- Quick Stat 3 -->
+<div class="glass-panel p-4 rounded-xl flex items-center gap-4 hover:bg-white/5 transition-colors cursor-pointer group">
+<div class="size-12 rounded-lg bg-emerald-500/20 flex items-center justify-center group-hover:bg-emerald-500/30 transition-colors">
+<span class="material-symbols-outlined text-emerald-400">psychology</span>
+</div>
+<div>
+<p class="text-slate-400 text-xs uppercase tracking-wide font-bold">Focus Score</p>
+<p class="text-white text-xl font-bold">9.2/10</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Activity Table / List -->
+<div class="glass-panel rounded-2xl p-6 mt-2">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-white text-lg font-bold">Recent Simulations</h3>
+<button class="text-sm text-primary hover:text-white transition-colors">View All</button>
+</div>
+<div class="space-y-4">
+<!-- Item 1 -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-md bg-cover bg-center" data-alt="Abstract chemistry molecules visualization" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDWbHwO9LmkjLuasfkzcc5wssHkkC9_eWd4VNiJODkPZ196iRjJyGGqQpu45avcoAhaBa4i-rs9uARQuAUjonu39JtPU4Uy1GUTkgP4VHpuwNd0pgug04J6i8P116sy4TJnNbB5mtAGu9B__BhLqK4ySl6TnK4u2Fc-Sgkg1wHp6lpoGqRfklCvHxL11n0ZMh6vP7NfJYLudiv2BqbCnooc-t8l6xP41sHvD8a_WiLkenObd0PN6_kGznnR1QNo1YPcV1rXXd2hKmmF");'>
+</div>
+<div>
+<p class="text-white font-bold text-sm">Molecular Structures 101</p>
+<p class="text-slate-400 text-xs">Chemistry • 2h ago</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="bg-green-500/20 text-green-400 text-xs px-2 py-1 rounded font-bold">Completed</span>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:text-white text-lg">more_vert</span>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-md bg-cover bg-center" data-alt="Historical map visualization" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCocVJnlGvGcGaKMSUrLtlKCnz-i4TMLitX00UHCACBa1ldJA42eyNARILeoTu7b1uSARFEMepPWxPm2B9Z1WdLgOWSCGjfdpFh-83nESpYCQ2vQT8Eg60WVfFEFoIV1yEROTa9nPlp307Q5C3fEDpgKybr5XhfLd5gOXtx7F2Y0I804PLAdBCcP3jfXWMfPMwixIGvz9w8djN3o-GXoKvoPd3YxoL5mhGoQgUl7F1M5MzUiUBQZP9Pny4uAoYKMXqo98yZ6RQ61ga2");'>
+</div>
+<div>
+<p class="text-white font-bold text-sm">Ancient Rome: VR Tour</p>
+<p class="text-slate-400 text-xs">History • Yesterday</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="bg-yellow-500/20 text-yellow-400 text-xs px-2 py-1 rounded font-bold">In Progress</span>
+<span class="material-symbols-outlined text-slate-500 cursor-pointer hover:text-white text-lg">more_vert</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
