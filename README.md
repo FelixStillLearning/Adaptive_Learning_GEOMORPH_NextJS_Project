@@ -1,4 +1,4 @@
-# Adaptive Learning System with Emotion Recognition
+# Adaptive Learning System with Emotion Recognition - GEOMORPH
 
 Sistem pembelajaran adaptif berbasis AI yang menyesuaikan tingkat kesulitan materi berdasarkan performa dan emosi siswa secara real-time.
 
